@@ -1,0 +1,233 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    
+}
+body {
+    background-color: rgb(238, 193, 44);
+    display: grid;
+    grid-template:
+        "sidenav poster ad" 102px
+        "sidenav container ad" 100%
+        "footer footer footer" 100%
+        / 160px 1fr 220px;
+}
+p {
+    font-size: .9rem;
+}
+h1, h2, span {
+    display: flex;
+    flex-wrap: wrap;
+} 
+h5 {
+    font-size: 1.2rem;
+}
+h6 {
+    font-size: 1rem;
+}
+h4 {
+    font-size: 1.4rem;
+}
+
+#tabel {
+    background-color: rgb(255, 255, 255);
+}
+.poster {
+    grid-area: poster;
+    margin-left: 0px;
+    display: flex;    
+    align-items: center;
+    background-color: rgb(156, 156, 156);
+}
+.poster_stuff {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+.page_status {
+    margin-left: 15px;
+    font-size: 3rem;
+}
+.user_status {
+    
+    margin-left: 13px;
+    font-size: 2rem;
+}
+
+.header {
+    margin-left: 1rem;
+    
+    font-size: 4rem;
+}
+
+
+.sidenav {
+    grid-area: sidenav;
+    background-color: rgb(37, 37, 37);
+    
+}
+.sidenav a {
+    margin-bottom: 1.8rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    display: block;
+    margin-left: 10px;
+}
+.sidenav i {
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+.sidenav a:hover {
+    color: rgb(60, 159, 240);
+    font-size: 1.3rem;
+}
+.logo {
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-bottom: 13px;
+    padding: 0.5rem;
+}
+.stuff {
+    grid-area: container;
+    font-size: 1.7rem;
+    margin-bottom: 1.4rem;
+    margin-left: 1.5rem;
+    overflow-x: hidden;
+}
+.advertise {
+    grid-area: ad;
+    background-color: rgb(212, 212, 212);
+    font-size: 3.5rem;
+    text-align: center;
+}
+footer {
+    grid-area: footer;
+}
+
+@media screen and (max-width:970px) {
+    * {
+        font-size: 12px;
+    }
+    body {
+        grid-template:
+            "sidenav" 
+            "poster"
+            "container"
+            "ad"
+            "footer" 
+            /100%;
+    }
+    .poster_stuff {
+        margin-right: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .sidenav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .sidenav a {
+        padding-right: 15px;
+        border-right: 2px rgb(248, 248, 248) solid;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidenav a:hover {
+        font-size: 1.2rem;
+    }
+    .sidenav img {
+        width: 80px;
+    }
+    .logo {
+        margin-top: 0;
+        margin-left: 0;
+        margin-bottom: 0px;
+    }
+    
+}
+@media screen and (max-width:650px) {
+    .stuff {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .box {
+        flex-direction: column;
+        
+        margin-top: 40px;
+    }
+    .box div {
+        text-align: center;
+        margin-top: -15px;
+    }
+    
+}
+@media screen and (max-width:340px) {
+    #movie_card {
+        margin-right: 5px;
+    }
+    #poster img {
+        width: 120px;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+.box {
+    display: flex;
+}
+.box div {
+    background-color: rgb(255, 255, 255);
+    flex: 1;
+    margin-bottom: 15px;
+    border: 3px rgb(177, 177, 177) solid;
+    padding: 8px;
+}
+
+.searched_movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+.searched_movies button {
+    font-size: 17px;
+}
+.searched_movies a {
+    font-size: 17px;
+}
+
+#head {
+    font-size: 25px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+#trailers{
+    display: flex;
+    flex-wrap: wrap;
+}
+#trailer {
+    margin: 5px;
+}
+#radif td {
+    font-size: 17px;
+}
+
+.home {
+    font-size: 4rem;
+}
+#somthing {
+    background-color: rgb(245, 245, 245);
+}
+

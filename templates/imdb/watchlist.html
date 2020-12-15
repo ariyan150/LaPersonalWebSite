@@ -1,0 +1,91 @@
+{% extends 'Base.html' %}
+
+{% block title %}WatchList{% endblock %}
+
+{% block page %}Watch List{% endblock %}
+
+{% block content %}
+<div class="container">
+<form method="POST" class="form ml-2">
+    {% csrf_token %}
+    <div class="row">
+        <h4>Type ...</h4>
+        <div class="col">
+            <select id="option" name="Type" class="form-control mb-2">
+                <option value="All" >All</option>
+                <option value="movie">Movies</option>
+                <option value="series">Tv Series</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Order by ...</h4>
+        <div class="col">
+            <select id="option" name="option" class="form-control mb-2">
+                <option value="added_date" >Add Date</option>
+                <option>imdbRating</option>
+                <option value="year">Year</option>
+            </select>
+        </div>
+        <div class="col mt-1">
+            <button type="submit" name='update' value="update" class="btn btn-dark btn-sm">Update</button>
+        </div>
+    </div>
+</form>
+</div>
+
+<div class="row mt-1 ml-3" id="cont">
+    {% for movie in Movies_list %}
+    <div class="card mt-3 mb-1 ml-2 " style="max-width: 330px;" id='movie_card'>
+        <div class="row no-gutters" id='poster'>
+          <div class="col  view overlay zoom">
+            <img src={{movie.img_url}} class="card-img" alt="...">
+            <div class="mask flex rgba-black-strong">
+                <p class="white-text"><big><b>Plot:</b></big> {{movie.plot}}</p>
+            </div>
+          </div>
+          <div class="col ml-3 mt-1">
+            
+              <h5 class="card-title" name='Title'>{{movie.name}} ({{movie.year}})</h5>
+              <h6 class="card-text"><small class="text-muted">{{movie.director}}</small></h6> 
+              <button type="button" class="btn btn-warning" disabled>{{movie.imdbRating}}</button>
+              <button type="button" class="btn btn-info" disabled>{{movie.metascore}}</button>
+              <h6 class="card-text"><small class="text-muted">{{movie.genre}}</small></h6> 
+              <h6 class="card-text"><small class="text-muted">{{movie.time}}</small></h6>
+            
+              <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-dark" name='Delete' value={{movie.id}}><i class="far fa-trash-alt"></i></button>
+                
+                <button type="submit" class="btn btn-danger" name='Detail' value={{movie.imdb_id}}><i class="fas fa-skull-crossbones"></i></button>
+              </form>
+          
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+{% if Movies_list.has_other_pages %}
+  <ul class="pagination">
+    {% if Movies_list.has_previous %}
+      <li><a href="?page={{ Movies_list.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in Movies_list.paginator.page_range %}
+      {% if Movies_list.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if Movies_list.has_next %}
+      <li><a href="?page={{ Movies_list.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}

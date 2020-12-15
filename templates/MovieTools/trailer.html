@@ -1,0 +1,24 @@
+{% extends 'Base.html' %}
+
+{% block title %}Trailer{% endblock %}
+
+{% block page %}Trailer{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1><span class="badge badge-pill badge-default">{{movie_name}}</span></h1>
+
+<div class="ml-2 mt-3" id="trailers">
+    {% for id in youtube_id %}
+      <div class="trailer" id="trailer">
+        <iframe width="560px" height="320px" src="https://www.youtube.com/embed/{{id}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    {% endfor %}
+</div>
+  
+
+{% endblock %}

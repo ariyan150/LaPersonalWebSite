@@ -1,0 +1,80 @@
+{% extends 'Base.html' %}
+
+{% block title %}Top{% endblock %}
+
+{% block page %}Top{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <h1><span class="badge badge-pill badge-default">
+    {% if genre_id == 1 %}
+      Most Popular Movies
+    {% elif genre_id == 3 %}
+      Top 250 Movies
+    {% elif genre_id == 4 %}
+      Most Popular TV Shows
+    {% endif %}
+  </span></h1>
+
+  <form method="POST"> {% csrf_token %}
+    <button type="submit" name="check" value="check" class="btn btn-elegant btn-lg btn-block text-white">Check</button>
+    <button type="submit" name="update" value="update" class="btn btn-primary btn-lg btn-block mb-3">Update List</button>
+  </form>
+  <table class="table">
+    <thead class="black white-text">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Year</th>
+        <th scope="col">Director</th>
+        <th scope="col">imdbRating</th>
+        <th scope="col">Metascore</th>
+        <th scope="col">Poster</th>
+      </tr>
+    </thead>
+    <tbody id="tabel">
+      {% for item in top_list %}
+        <tr id="radif">
+          <th scope="row">{{item.number}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.year}}</td>
+          <td>{{item.director}}</td>
+          <td>{{item.imdbRating}}</td>
+          <td>{{item.metascore}}</td>
+          <td><img src={{item.img_url}} style="width: 60px;" alt="..."></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if top_list.has_other_pages %}
+    <ul class="pagination">
+      {% if top_list.has_previous %}
+        <li><a href="?page={{ top_list.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in top_list.paginator.page_range %}
+        {% if top_list.number == i %}
+          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if top_list.has_next %}
+        <li><a href="?page={{ top_list.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'Base.html' %}
+
+{% block title %}ToDo List{% endblock %}
+
+{% block page %}ToDo List{% endblock %}
+
+{% block content %}
+<div class="container">
+<form method="POST">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="inputZip">Work</label>
+      <input name='name' type="text" class="form-control" id="inputZip">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputCity">Detail</label>
+      <input name='detail' type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Category</label>
+      <select id="inputState" name="category" class="form-control">
+        <option selected>Work</option>
+        <option>Book</option>
+        <option>Life</option>
+        <option>Tech</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group mt-3 ml-2">
+      <button type="submit" name='Add' value="Add" class="btn btn-info mb-2 mt-3"><i class="fas fa-plus"></i></button>
+    </div>
+  </div>
+</form>
+
+
+
+  <table class="table">
+    <thead class="black white-text">
+      <tr>
+        <th scope="col">Todo</th>
+        <th scope="col">Detail</th>
+        <th colspan="2" scope="col">Added Date</th>
+      </tr>
+    </thead>
+    <form method="POST">
+      {% csrf_token %}
+        <tbody id="tabel">
+          {% for item in ls %}
+            <tr>
+              <td><big><b>{{item.name}}</b></big></td>
+              <td>{{item.detail}}</td>
+              <td>{{item.added_date}}</td>
+              <td><button type="submit" class="btn btn-danger" name='Delete' value={{item.id}}><i class="far fa-trash-alt"></i></button></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </form>
+  </table>
+
+</div>
+{% endblock %}

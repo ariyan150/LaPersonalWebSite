@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+
+{% block title %}Parents Guide{% endblock %}
+
+{% block page %}Parents Guide{% endblock %}
+
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="active-purple-3 active-purple-4 mb-4 mr-3">
+    <input class="form-control" type="text" name="id" placeholder="Type the imdb ID..." aria-label="Search">
+  </div>
+</form>
+
+
+<div class="container">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item " id="head">{{movie_name}}</li>
+    {% for x in reviews %}
+      <li class="list-group-item">{{x}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

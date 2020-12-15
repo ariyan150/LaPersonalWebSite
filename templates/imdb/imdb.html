@@ -1,0 +1,50 @@
+{% extends 'Base.html' %}
+
+{% block title %}imdb{% endblock %}
+
+{% block page %}imdb{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<form class="form-inline mb-3" method="POST">
+    {% csrf_token %}
+    <div class="form-group mb-2">
+      <h4>Search for Movies</h4>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="inputPassword2" class="sr-only"></label>
+      <input type="input" class="form-control" name='name' id="inputPassword2" placeholder="Type Here...">
+    </div>
+    <button type="submit" name='Search' value="Search" class="btn btn-info mb-2"><i class="fas fa-search"></i></button>
+</form>
+</div>
+    
+<div class="searched_movies">
+  {% for x in movies %}
+    <div class="card mt-3 ml-2 " style="max-width: 330px;" id='movie_card'>
+      <div class="row no-gutters" id='poster'>
+        <div class="col ">
+          <img src={{x.Poster}} class="card-img" alt="...">
+        </div>
+        <div class="col ml-3 mt-1">
+          <form method="POST">
+            {% csrf_token %}
+            <h5 class="card-title" name="{{x.imdbID}}">{{x.Title}} ({{x.Year}})</h5>
+            <h6 class="card-text"><small class="text-muted">{{x.Type}} | {{x.imdbID}}</small></h6>
+            <a href="/movietools/parentsguide/{{x.imdbID}}/{{x.Title}} ({{x.Year}})/" target="_blank" class="btn btn-dark"><i class="fas fa-info"></i></a>
+            <a href="/movietools/morelike/{{x.imdbID}}/{{x.Title}} ({{x.Year}})/" target="_blank" class="btn btn-info"><i class="far fa-meh"></i> </i><i class="fas fa-meh"></i></a>
+            <a href="/movietools/trailer/{{x.Title}}({{x.Year}})/" target="_blank" class="btn btn-danger" id="youtube"><i class="fab fa-youtube"></i></a>
+            <button class="btn btn-light-green" type="submit" name="Add" value="{{x.imdbID}}"><i class="fas fa-plus-square"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+  
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+
+{% block title %}More like this{% endblock %}
+
+{% block page %}More like {{imdb_id}}{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="searched_movies">
+  {% for x in movies %}
+    <div class="movie">
+    <div class="card ml-2 mb-2" style="width: 11rem;">
+      <img src="{{x.img}}" class="card-img-top" alt="...">
+      <h5 class="card-title">{{x.Title}}</h5>
+    </div>
+    </div>
+  {% endfor %}
+</div>
+  
+
+{% endblock %}

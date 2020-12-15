@@ -1,0 +1,70 @@
+{% extends 'Base.html' %}
+
+{% block title %}Movie Tools{% endblock %}
+
+{% block page %}Movie Tools{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<h1><span class="badge badge-pill badge-default mb-2">Tools</span></h1>
+<div class=" text-center d-flex flex-wrap" id="tools">
+  <div class="cole ml-3">
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header" id="cart_header">Parents Guide</div>
+      <div class="card-body">
+        <p class="card-text text-dark">By Entering the imdbID, get +18 Information for Considered Movie</p>
+        <a href="parentsguide/" class="btn btn-dark"><i class="fas fa-clone left"></i> View project</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cole ml-3">
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header" id="cart_header">More Like This</div>
+      <div class="card-body">
+        <p class="card-text text-dark">By Entering the imdbID, get Movies like Considered Movie</p>
+        <a href="morelike/" class="btn btn-dark"><i class="fas fa-clone left"></i> View project</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1><span class="badge badge-pill badge-default mb-2 mt-2">Top Lists</span></h1>
+
+  <a href="top/3" class="btn btn-dark-green text-white btn-lg">Top 250 Movies</a>
+
+  <a href="top/1" class="btn btn-secondary btn-lg">Most Popular Movies</a>
+
+  <a href="top/4" class="btn btn-danger btn-lg">Most Popular TV Shows</a>
+
+<h1><span class="badge badge-pill badge-default mb-2 mt-2">Popular By Genre</span></h1>
+
+  <a href="top/action" class="btn btn-unique text-white btn-lg">Action</a>
+
+  <a href="top/sci-fi" class="btn btn-deep-purple text-white btn-lg">Sci-Fi</a>
+
+  <a href="top/horror" class="btn btn-mdb-color text-white btn-lg">Horror</a>
+
+  <a href="top/fantasy" class="btn btn-brown text-white btn-lg">Fantasy</a>
+
+  <a href="top/comedy" class="btn btn-dark-green text-white btn-lg">Comedy</a>
+
+  <a href="top/animation" class="btn btn-cyan text-white btn-lg">Animation</a>
+
+  <a href="top/romance" class="btn btn-pink text-white btn-lg">Romance</a>
+
+  <a href="top/adventure" class="btn btn-deep-orange text-white btn-lg">Adventure</a>
+
+  <a href="top/music" class="btn btn-light-green text-white btn-lg">Music</a>
+
+  <a href="top/drama" class="btn btn-purple text-white btn-lg">Drama</a>
+
+  <a href="top/crime" class="btn btn-blue-grey text-white btn-lg">Crime</a>
+
+  <a href="top/western" class="btn btn-light-blue text-white btn-lg">Western</a>
+
+  <a href="top/musical" class="btn btn-indigo text-white btn-lg">Musical</a>
+{% endblock %}
